@@ -1,0 +1,43 @@
+{% extends 'user/../base.html' %}
+{% load staticfiles %}
+{% block title %}注册{% endblock %}
+
+
+{% block main %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form class='form-login' action="/register/" method="post">
+                {% csrf_token %}
+                <!--状态提示-->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <h2 class="text-center">注册</h2>
+                <div class="form-group">
+                    <label>学号：</label>
+                    <input type="text" name='number' class="form-control" placeholder="Number"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label>姓名：</label>
+                    <input type="text" name='name' class="form-control" placeholder="Name"
+                           autofocus required>
+                </div>
+                <div class="form-group">
+                    <label>班级：</label>
+                    <input type="text" name='grade' class="form-control" placeholder="Grade"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label>密码：</label>
+                    <input type="password" name='password' class="form-control" placeholder="Password"
+                           required>
+                </div>
+                <button type="reset" class="btn btn-default pull-left">重置</button>
+                <button type="submit" class="btn btn-primary pull-right">提交</button>
+            </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

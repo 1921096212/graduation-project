@@ -1,0 +1,16 @@
+{#学习页面#}
+{% extends 'index/../sidebar.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    在线学习
+{% endblock %}
+
+{% block content %}
+    <div id="x-content">
+        <h4>{{ c.title }}</h4>
+        <hr>
+        <!--内容-->
+        {{ content | safe }}
+    </div>
+{% endblock %}

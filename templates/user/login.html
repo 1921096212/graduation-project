@@ -1,0 +1,34 @@
+{% extends 'user/../base.html' %}
+{% load staticfiles %}
+{% block title %}登录{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+            <form class='form-login' action="/login/" method="post">
+                {% csrf_token %}
+                <!--状态提示-->
+                {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
+                <h2 class="text-center">欢迎登录</h2>
+                <div class="form-group">
+                    <label for="id_username">学号：</label>
+                    <input type="text" name='username' class="form-control" id="id_username" placeholder="Number"
+                           autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="id_password">密码：</label>
+                    <input type="password" name='password' class="form-control" id="id_password" placeholder="Password"
+                           required>
+                </div>
+                <button type="reset" class="btn btn-default pull-left">重置</button>
+                <button type="submit" class="btn btn-primary pull-right">提交</button>
+            </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
